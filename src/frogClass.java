@@ -21,14 +21,15 @@ public class frogClass {
 			BufferedReader input = new BufferedReader(reader);
 			
 			String command = input.readLine();
-			
-			if(command.equals("TELL")){
-				aquireKnowledge(input.readLine());
+				while(command != null){
+				if(command.equals("TELL")){
+					aquireKnowledge(input.readLine());
+				}
+				else if(command.equals("ASK")){
+					formulateQuerey(input.readLine());
+				}
+				command = input.readLine();
 			}
-			else if(command.equals("ASK")){
-				formulateQuerey(input.readLine());
-			}
-			
 		}
 		catch(FileNotFoundException ex){
 			System.out.println("not found " + ex);
