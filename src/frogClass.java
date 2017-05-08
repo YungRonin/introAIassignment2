@@ -4,14 +4,25 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class frogClass {
+	private static String fileName;
+	private static frogClass frog;
 	
-	private int frogNumber;
-	private String frogWord;
 	
-	public frogClass(int intArg, String stringArg){
+	public frogClass(String aString){
+		frogClass.fileName = aString;
+	}
+	
+	public static void main(String[] args){
 		
-		this.frogNumber = intArg;
-		this.frogWord = stringArg;
+		frog = new frogClass("asdf");
+		try {
+			frog.readFile(fileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.exit(0);
 	}
 	
 	public void readFile(String fileName) throws IOException{
@@ -30,6 +41,8 @@ public class frogClass {
 				}
 				command = input.readLine();
 			}
+				
+			input.close();
 		}
 		catch(FileNotFoundException ex){
 			System.out.println("not found " + ex);
@@ -37,13 +50,15 @@ public class frogClass {
 	}
 
 	private void formulateQuerey(String readLine) {
-		// TODO Auto-generated method stub
-		
+		for(String info : readLine.split(";")){
+			System.out.println(info);
+		}
 	}
 
 	private void aquireKnowledge(String readLine) {
-		// TODO Auto-generated method stub
-		
+		for(String info : readLine.split(";")){
+			System.out.println(info);
+		}
 	}
 
 }
