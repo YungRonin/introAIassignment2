@@ -1,5 +1,7 @@
 "# introAIassignment2" 
 
+TEST DAN BRANCH 1
+
 Dan's ideas for a data structure:
 
 Class: KnowledgeBase - a list (or some other collection) of Sentences
