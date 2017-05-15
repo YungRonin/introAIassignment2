@@ -14,7 +14,7 @@ public class frogClass {
 	
 	public static void main(String[] args){
 		
-		frog = new frogClass("asdf");
+		frog = new frogClass("asdf.txt");
 		try {
 			frog.readFile(fileName);
 		} catch (IOException e) {
