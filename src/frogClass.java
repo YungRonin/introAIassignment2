@@ -6,6 +6,7 @@ import java.io.IOException;
 public class frogClass {
 	private static String fileName;
 	private static frogClass frog;
+	private static knowledgeBase kb;
 	
 	
 	public frogClass(String aString){
@@ -15,6 +16,7 @@ public class frogClass {
 	public static void main(String[] args){
 		
 		frog = new frogClass("asdf.txt");
+		kb = new knowledgeBase();
 		try {
 			frog.readFile(fileName);
 		} catch (IOException e) {
@@ -43,6 +45,8 @@ public class frogClass {
 			}
 				
 			input.close();
+			
+			kb.printKB();
 		}
 		catch(FileNotFoundException ex){
 			System.out.println("not found " + ex);
@@ -57,7 +61,7 @@ public class frogClass {
 
 	private void aquireKnowledge(String readLine) {
 		for(String info : readLine.split(";")){
-			System.out.println(info);
+			kb.add(readLine);
 		}
 	}
 
