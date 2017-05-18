@@ -1,7 +1,38 @@
 "# introAIassignment2" 
 
-TEST DAN BRANCH 1 yeah this one
+2017-05-10 - Dan Flett
+Hi guys,
 
+I've implemented the sentenceClass as an abstract classes, and this includes the classes:
+*	literalClass - contains a literal symbol which contains a name and a boolean value (which can be set)
+*	connectedSentence abstract class which extends the sentence class - this contains two sentences - A and B
+*	conjunction is a concrete connectedSentence which when eval is called, returns A AND B
+*	implication is a concrete connectedSentence which when eval is called, returns A => B
+
+I've made unit tests that test the above classes
+
+I've also implemented an Infix To Postfix parser for the symbols we will use (including for a generic logic sentence parser)
+So if you give it the string" "p1&p3 => c" (infix notation)
+it will return: "p1 p3 & d =>" (postfix notation) as a string or as a LinkedList of strings (currently outputs to console but I'll change that shortly)
+
+With the sentence in postfix notation it is a lot easier to calculate - you just calculate from left to right. There are some easy algorithms online to evaluate postfix notation.
+
+It is also a lot easier to put the sentence into a tree format - again you evaluate from left to right. I believe by putting the sentences into tree format it will be easier to do Forward and Backward chaining.
+
+TO DO:
+* parse the TELL line (the Knowledgebase) into a list of sentences and a list of literals (the literals being pointers to the same literals in the Knowledgebase)
+* Put the sentences into tree format
+* Evaluate the sentences
+* Create a truth table (the size = 2 ^ number of literals in KB)
+  - evaluate each line of the TT to determine which sentences are true for each line of the TT
+* Do FC and BC algorithms
+* Do a generic logic statement evaluator for the research component
+* create final README file for submission
+
+
+
+
+2017-05-10 - Dan Flett
 Dan's ideas for a data structure:
 
 Class: KnowledgeBase - a list (or some other collection) of Sentences

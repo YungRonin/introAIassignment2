@@ -16,7 +16,7 @@ public class ZZtest20Sentences {
 		assertTrue(testLiteral instanceof sentenceClass); 			// is the tested object a subclass of sentenceClass
 		assertEquals(literalClass.class, testLiteral.getClass()); 	// is the tested object an instance of it's own type
 		assertEquals("testA", ((literalClass)testLiteral).name()); 	// does the name property function correctly
-		assertTrue( testLiteral.eval() );				// does the eval property function correctly
+		assertTrue( testLiteral.eval() );							// does the eval property function correctly
 	} 
 	
 	@Test
