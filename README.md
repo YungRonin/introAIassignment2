@@ -1,5 +1,29 @@
 "# introAIassignment2" 
 
+2017-05-20 - Dan Flett
+
+Nice work Dylan! That's a really cool implementation of FC and BC. Much simpler and cleaner than what I was considering.
+
+I believe I can do the Truth Table in a simpler way than the tree structure I was originally going to do. I think I'll be able to make a postfix evaluator that will work with Horn clauses and and generic clauses. So in dan-branch-2 I've dropped all the sentenceClass classes. I think I can just have a list of literals that also stores their boolean values as a Map<String,Boolean>. When the evaluator encounters a literal, it looks it up in the Map to obtain it's boolean value (so it's doing a Key,Value lookup). Setting the values in the truth table is as simple as iterating through the list of literals and setting each boolean true or false as required.
+
+So with the literals having their boolean values set, I'll be able to put a sentence into the postfix evaluator and return a boolean result.
+
+I've just discovered the java Bitset class, which looks like it's perfect for converting an integer or long to an array of booleans. I think this is how to set each "possible world" or row of the truth table. I'm investigating now.
+
+2017-05-20 - Dylan Forster
+Hi guys,
+
+I've implemented forward and backward chaining as well as the knowledgeBase class and modified main to run both,
+at the moment we still need to:
+
+* Create a truth table (the size = 2 ^ number of literals in KB)
+  - evaluate each line of the TT to determine which sentences are true for each line of the TT
+* Do a generic logic statement evaluator for the research component
+* create final README file for submission
+
+I havent used the sentence, literal, implication, connectedSentence or infixToPostfix classes in this implementation, we can refactor knowledgebase/fwdChian & bkwdChain to use these if desired.
+I've merged the changes to master and Dan's branch (just incase you forgot to merge with master) so you dont wast time on the same code.
+
 2017-05-10 - Dan Flett
 Hi guys,
 
