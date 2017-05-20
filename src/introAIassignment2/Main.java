@@ -10,9 +10,8 @@ public class Main {
 	
 	public static void main(String[] args){
 		
-		kb = new knowledgeBase();
 		try {
-				readFile("asdf.txt");
+				readFile("lkjh.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,40 +32,30 @@ public class Main {
 			String command = input.readLine();
 				while(command != null){
 				if(command.equals("TELL")){
-					//aquireKnowledge(input.readLine());
 					tell = input.readLine();
+					//strip all spaces from ask and tell to aid parsing
+					tell = tell.replaceAll("\\s+","");
 				}
 				else if(command.equals("ASK")){
-					//formulateQuerey(input.readLine());
 					ask = input.readLine();
+					//strip all spaces from ask and tell to aid parsing
+					ask = ask.replaceAll("\\s+","");
+					
 				}
 				command = input.readLine();
 			}
 				
 			input.close();
 			
-			//strip all spaces from ask and tell to aid parsing
-			ask.replaceAll("\\s+","");
-			tell = tell.replaceAll("\\s+","");
-			
 			forwardChaining fChain = new forwardChaining(ask, tell);
-			System.out.println("result = " + fChain.execute());
+			backwardChaining bChain = new backwardChaining(ask, tell);
+			System.out.println("forward chain : " + fChain.execute());
+			fChain.printKb();
+			System.out.println("backward chain : " + bChain.execute());
+			bChain.printKb();
 		}
 		catch(FileNotFoundException ex){
 			System.out.println("not found " + ex);
 		}
 	}
-
-	private static void formulateQuerey(String readLine) {
-		for(String info : readLine.split(";")){
-			System.out.println(info);
-		}
-	}
-
-	private static void aquireKnowledge(String readLine) {
-		for(String info : readLine.split(";")){
-			//kb.add(info);
-		}
-	}
-
 }
