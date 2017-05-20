@@ -14,12 +14,12 @@ public class InfixToPostfixClass {
 	// adapted from http://introcs.cs.princeton.edu/java/43stack/InfixToPostfix.java.html
 	// with insight from http://csis.pace.edu/~wolf/CS122/infix-postfix.htm
 	
-    public static void InfixToPostfix(String sentence) {
+    public static List<String> InfixToPostfix(String sentence) {
     	String _sentence=sentence;
     	connectivesClass c = new connectivesClass();// this includes the list of connectives and operators
    	
 // debug print input    	
-    	System.out.println(_sentence);
+//    	System.out.println(_sentence);
     	for (String connective : c.connectives){
     		_sentence = _sentence.replace(connective, " "+connective+" ");
     	}
@@ -31,7 +31,7 @@ public class InfixToPostfixClass {
 
     	
 // debug print input    	
-        System.out.println(String.join(" ", infixList));
+//        System.out.println(String.join(" ", infixList));
     	
     	List<String> postfixList = new ArrayList<String>();
     	Stack<String> stack = new Stack<String>();
@@ -86,7 +86,8 @@ public class InfixToPostfixClass {
        }
         
 // debug print output
-        System.out.println("Output: " + String.join(" ",postfixList));
+//        System.out.println("Output: " + String.join(" ",postfixList));
+       return postfixList;
     }
 
 }
