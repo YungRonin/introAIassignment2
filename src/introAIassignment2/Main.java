@@ -5,14 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
-	private static String fileName;
+	//private static String fileName;
 	private static knowledgeBase kb;
 	
 	public static void main(String[] args){
 		
 		kb = new knowledgeBase();
 		try {
-				readFile(fileName);
+				readFile("asdf.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -23,6 +23,9 @@ public class Main {
 	
 	public static void readFile(String fileName) throws IOException{
 		
+		String ask = "";
+		String tell = "";
+		
 		try{
 			FileReader reader = new FileReader(fileName);
 			BufferedReader input = new BufferedReader(reader);
@@ -30,17 +33,24 @@ public class Main {
 			String command = input.readLine();
 				while(command != null){
 				if(command.equals("TELL")){
-					aquireKnowledge(input.readLine());
+					//aquireKnowledge(input.readLine());
+					tell = input.readLine();
 				}
 				else if(command.equals("ASK")){
-					formulateQuerey(input.readLine());
+					//formulateQuerey(input.readLine());
+					ask = input.readLine();
 				}
 				command = input.readLine();
 			}
 				
 			input.close();
 			
-			kb.printKB();
+			//strip all spaces from ask and tell to aid parsing
+			ask.replaceAll("\\s+","");
+			tell = tell.replaceAll("\\s+","");
+			
+			forwardChaining fChain = new forwardChaining(ask, tell);
+			System.out.println("result = " + fChain.execute());
 		}
 		catch(FileNotFoundException ex){
 			System.out.println("not found " + ex);
@@ -55,7 +65,7 @@ public class Main {
 
 	private static void aquireKnowledge(String readLine) {
 		for(String info : readLine.split(";")){
-			kb.add(readLine);
+			//kb.add(info);
 		}
 	}
 
