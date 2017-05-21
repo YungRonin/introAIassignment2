@@ -1,5 +1,12 @@
 "# introAIassignment2" 
 
+2017-05-20 - Adam Richards
+
+Hey guys I have uploaded a starting base for the final README file. I was planning to work on FC and BC today but just realised Dylan has finished both, and you seem to be working on TT Dan?
+
+I guess I will start with trying to implement a generic logic statement evaluator.
+
+
 2017-05-20 - Dan Flett
 
 Nice work Dylan! That's a really cool implementation of FC and BC. Much simpler and cleaner than what I was considering.

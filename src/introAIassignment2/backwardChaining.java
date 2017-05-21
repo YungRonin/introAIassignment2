@@ -1,6 +1,5 @@
 package introAIassignment2;
 import java.util.*;
-import java.io.*;
 
 //http://snipplr.com/view/56297/ai-backward-chaining-implementation-for-propositional-logic-horn-form-knowledge-bases/
 
