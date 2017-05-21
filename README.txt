@@ -3,6 +3,8 @@
 Student Details: 
 Your full student names, ids, and your group number (as allocated by ESP).
 Adam Richards, 7634765
+Dylan Forster, ID
+Dan Flett, ID
 
 
 Features/Bugs/Missing: 
