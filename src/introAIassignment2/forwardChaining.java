@@ -37,16 +37,17 @@ public void printKb(){
 	kb.printKB();
 }
 
-public String printArrayList(ArrayList<String> args){
-	
-	String result = "";
-	
-	for(String option : args){
-		 result += option + " , ";
-	}
-	
-	return result;
-}
+//public String printArrayList(ArrayList<String> args){
+//	
+//	String result = "";
+//	String comma = "";
+//	
+//	for(String option : args){
+//		 result += comma + option;
+//		 comma = ", ";
+//	}
+//	return result;
+//}
  
 // FC algorithm
 public boolean fwdChainingEntails(){
