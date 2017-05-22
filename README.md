@@ -1,5 +1,54 @@
 "# introAIassignment2" 
 
+2017-05-21 - Dan Flett
+Hi guys,
+I've decided that I'm going to use my sentence classes and tree structure after all to implement the truth table. The reason being is that these classes are able to make the task of associating a literal with it's boolean value easy. This wasn't necessary for BC and FC but it is with with TT. I can do a postfix evaluator that just deals with the literals and operators as strings but each time I'll have to look up the string in a list and then cross-reference it to the value it's supposed to have. The Sentence Classes do this automatically. Also, I can use the postfix evaluation algorithm once to create the sentence tree structure once per program execution. If I don't do that, I have to run the postix evaluation on every row of the Truth Table, and every time I encounter a literal, I have to do a list lookup. I haven't started coding this yet but I've been doing a rough pseudo code:
+
+Turn postfix into sentence tree
+Stack is a stack of sentences
+
+	CREATE SENTENCE TREE USING POSTFIX EVALUATION ALGORITHM
+	Get symbol in sentence
+		if literal,
+			push to stack
+			put into KB list of literals if not already there
+		if 2-input operator,
+			Pop 2 sentences,
+			create new sentence based on operator type,
+			push to stack
+		if 1-input operator (i.e. NOT),
+			Pop 1 sentence,
+			create new sentence based on operator type,
+			push to stack
+	get next symbol
+
+	TRUTH TABLE
+	NumOfLiterals = length of literals array
+	TTRows = 2 ^ literals
+	NumOfTrueWorlds = TTRows // we decrement each time we find a false KB sentence - we move onto the next TT Row (world)
+	FOR ROW = 0 to TTRows
+		// LiteralVals uses the "toBinaryString" method to create an array of strings that are either 0 or 1.
+		// I'll update my "setvalue" method in the literal class to accept "0" or "1" strings as well as boolean true or false
+		String[] LiteralVals = String.format("%"+bits+"s", Integer.toBinaryString(ROWS)).replace(' ', '0').split("");
+		// set all the boolean values of the literals in the KB
+		FOR i = 0 to NumOfLiterals-1
+			Literal[i].Setvalue(LiteralVals[i])
+		// Evaluate each sentence in KB
+		FOR EACH SENTENCE IN KB.SENTENCES
+			IF !SENTENCE.EVAL
+				NumOfTrueWorlds-- // we found a false sentence in this row (world) so decrement the TrueWorlds counter
+				BREAK // stop checking the sentences on this row (world) of the TT, move on to the next row
+	Return NumOfTrueWorlds
+		
+We can have a chat about this tomorrow and I'll code this up tomorrow night. Once it works with Horn Form sentences (where the only operators are "&" and "=>", it should be fairly simple to add all the other operator classes.
+
+2017-05-20 - Adam Richards
+
+Hey guys I have uploaded a starting base for the final README file. I was planning to work on FC and BC today but just realised Dylan has finished both, and you seem to be working on TT Dan?
+
+I guess I will start with trying to implement a generic logic statement evaluator.
+
+
 2017-05-20 - Dan Flett
 
 Nice work Dylan! That's a really cool implementation of FC and BC. Much simpler and cleaner than what I was considering.
