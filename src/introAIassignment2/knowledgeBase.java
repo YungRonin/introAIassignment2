@@ -89,11 +89,12 @@ public class knowledgeBase {
 	public String printArrayList(ArrayList<String> args){
 		
 		String result = "";
+		String comma = "";
 		
 		for(String option : args){
-			 result += option + " , ";
+			 result += comma + option;
+			 comma = ", ";
 		}
-		
 		return result;
 	}
 	

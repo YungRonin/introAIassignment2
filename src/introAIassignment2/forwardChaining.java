@@ -1,27 +1,23 @@
 package introAIassignment2;
 import java.util.*;
-import java.io.*;
 
 //http://snipplr.com/view/56296/ai-forward-chaining-implementation-for-propositional-logic-horn-form-knowledge-bases/
  
-public class forwardChaining{
+public class forwardChaining extends truthMethod{
 
-private static String tell;
-private static String ask;
 private static ArrayList<String> agenda;
 private static ArrayList<Integer> count;
 private static knowledgeBase kb;
  
-public forwardChaining(String a, String t){
+public forwardChaining(String code, String longName){
+	super(code, longName);
 
 	agenda  = new ArrayList<String>();
 	kb = new knowledgeBase();
 	count  = new ArrayList<Integer>();
-	tell = t;
-	ask = a;
-	init(tell);
 }
  
+@Override
 public String execute(){
 	String output = "";
 	if (fwdChainingEntails()){
@@ -41,16 +37,17 @@ public void printKb(){
 	kb.printKB();
 }
 
-public String printArrayList(ArrayList<String> args){
-	
-	String result = "";
-	
-	for(String option : args){
-		 result += option + " , ";
-	}
-	
-	return result;
-}
+//public String printArrayList(ArrayList<String> args){
+//	
+//	String result = "";
+//	String comma = "";
+//	
+//	for(String option : args){
+//		 result += comma + option;
+//		 comma = ", ";
+//	}
+//	return result;
+//}
  
 // FC algorithm
 public boolean fwdChainingEntails(){
@@ -102,8 +99,12 @@ while(!agenda.isEmpty()){
  
  
 // method which sets up initial values for forward chainin
-public static void init(String tell){
-   String[] statementes = tell.split(";");
+@Override
+public void init(String tell, String ask){
+
+	this.ask = ask;
+	this.tell = tell;
+	String[] statementes = tell.split(";");
 
 	for (String statement : statementes){
  
