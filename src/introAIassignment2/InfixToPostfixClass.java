@@ -16,11 +16,11 @@ public class InfixToPostfixClass {
 	
     public static List<String> InfixToPostfix(String sentence) {
     	String _sentence=sentence;
-    	connectivesClass c = new connectivesClass();// this includes the list of connectives and operators
    	
 // debug print input    	
 //    	System.out.println(_sentence);
-    	for (String connective : c.connectives){
+
+    	for (String connective : connectivesClass.connectives){
     		_sentence = _sentence.replace(connective, " "+connective+" ");
     	}
     	// trim multiple spaces to one, and trims leading and trailing whitespace
@@ -42,7 +42,7 @@ public class InfixToPostfixClass {
             infixList.remove(0);
 
             // 1.	Output operands (literals) as they arrive
-        	if (!c.connectives.contains(s)) {
+        	if (!connectivesClass.connectives.contains(s)) {
         		postfixList.add(s);
         	}
         	
@@ -69,8 +69,8 @@ public class InfixToPostfixClass {
         	//		If the association is right to left, push the incoming operator.
         	// 7.	If the incoming symbol has lower precedence than the symbol on the top of the stack, pop the stack and print the top operator.
         	//		Then test the incoming operator against the new top of stack.
-            else if (c.operators.contains(s)) {
-            	while ((!stack.isEmpty()) && c.operators.indexOf(s) <= c.operators.indexOf(stack.peek())) {
+            else if (connectivesClass.operators.contains(s)) {
+            	while ((!stack.isEmpty()) && connectivesClass.operators.indexOf(s) <= connectivesClass.operators.indexOf(stack.peek())) {
             		// the incoming symbol is lower precedence to the top of the stack
             		// so pop the stack and add to the output
             		postfixList.add(stack.pop());

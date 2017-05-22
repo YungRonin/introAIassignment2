@@ -1,31 +1,30 @@
 package introAIassignment2;
 import java.util.*;
-import java.io.*;
 
 //http://snipplr.com/view/56297/ai-backward-chaining-implementation-for-propositional-logic-horn-form-knowledge-bases/
 
-public class backwardChaining {
+public class backwardChaining extends truthMethod{
 	
-	private static String tell;
-	private static String ask;
 	private static ArrayList<String> agenda;
 	private static ArrayList<String> resultProcess;
 	private static knowledgeBase kb;
 	 
-	public backwardChaining(String a, String t){
+	public backwardChaining(String code, String longName){
+		super(code, longName);
 		agenda  = new ArrayList<String>();
 		resultProcess = new ArrayList<String>();
-		tell = t;
-		ask = a;
 		kb = new knowledgeBase();
-		init(tell);
 	}
 	 
-	public static void init(String tell){
+	@Override
+	public void init(String tell, String ask){
+		this.ask = ask;
+		this.tell = tell;
 		agenda.add(ask);
 		kb.addSentences(tell);
 	}
 	 
+	@Override
 	public String execute(){
 		String output = "";
 	 
