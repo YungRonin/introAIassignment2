@@ -27,7 +27,7 @@ public class iEngine {
 				truthMethod aMethod = null;
 				
 				for(int i = 0; i < tMethods.length; i++){
-					if(tMethods[i].code.compareTo(method) == 0){
+					if(tMethods[i].code.compareTo(method.toLowerCase()) == 0){
 						aMethod = tMethods[i];
 					}
 				}
