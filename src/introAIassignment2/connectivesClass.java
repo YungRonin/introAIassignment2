@@ -15,6 +15,15 @@ public class connectivesClass {
 			")", // close parenthesis
 			"(" // open parenthesis
 	};
+	
+	public static boolean contains(char args){
+		String arg = "" + args;
+		for(String con : cons){
+			if(con.contains(arg))
+				return true;
+		}
+		return false;
+	}
 
 	// connectives is the list of all non-literals, including parentheses
    	public static List<String> connectives = new LinkedList<String>(Arrays.asList(cons));
