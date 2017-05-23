@@ -19,8 +19,8 @@ Stack is a stack of sentences
 
 			
 		if 2-input operator,
-			create operator class from string
 			Pop 2 sentences,
+			create operator class from string
 			create new sentence based on operator type,
 			push to stack
 		if 1-input operator (i.e. NOT),
