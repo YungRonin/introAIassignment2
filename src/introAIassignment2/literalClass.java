@@ -17,6 +17,12 @@ public class literalClass extends sentenceClass {
 		return _value;
 	}
 	
+	@Override
+	public String debug(int level) {
+		level++;
+		return _name+":"+_value+"";
+	}
+	
 	// value is not set with the constructor, must be set after construction
 	public void setValue (boolean value) {
 		_value = value;
