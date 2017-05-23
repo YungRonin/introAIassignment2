@@ -8,11 +8,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Stack;
 
-
 public class truthTable extends truthMethod {
-	private List<sentenceClass> sentenceList; // contains sentences represented as sentenceClass object trees
-	private Map<String, literalClass> literalList; // uniquely identifies each literal represented in all sentences in the sentenceList
-	private sentenceClass askTree; // contains the ask query as a sentenceClass object tree
+	private List<sentenceClass> sentenceList;		// contains sentences represented as sentenceClass object trees
+	private Map<String, literalClass> literalList;	// uniquely identifies each literal represented in all sentences in the sentenceList
+	private sentenceClass askTree;					// contains the ask query as a sentenceClass object tree (so queries can be complex sentences)
 	
 	public truthTable(String code, String longName) {
 		super(code, longName);

@@ -1,5 +1,31 @@
 "# introAIassignment2" 
 
+2017-05-23 - Dan Flett
+
+OK guys I think we have a working program. The original algorithm below in the README.md wasn't quite right. I had some issues because I was making the implication objects with the left and right the wrong way around and because I wasn't testing against the ASK query. I think it's all good now - test1.txt gives the output "YES: 3" which is what it's supposed to.
+
+Adam, doing the generic TT evaluator is pretty straightforward from here.
+
+You need to make:
+disjunction extends connectedSentence
+biconditional extends connectedSentence
+inversion extends sentenceClass // this takes one sentence
+
+and in truthTable.java look for "// NEW OPERATORS GO HERE" for where to put the code to handle the new operators. Remembering that the inversion (NOT) only pops one symbol off the stack.
+
+You don't need to make classes for parenthesis because the sentence objects are created from a postfix-formatted sentence string, which eliminates the need for parentheses.
+
+Look in connectivesClass to see examples of the symbols to use for disjunction, biconditional and inversion. Then make up some test text files. don't put too many literals in them, this makes the truth table too big to effectively debug.
+
+If you need help, let me know. I've put some debug methods into the sentenceClass derived classes which help you follow the logic
+
+I'll start writing the research report PDF tomorrow and I'll put our names on it.
+
+
+
+
+
+
 2017-05-21 - Dan Flett
 Hi guys,
 I've decided that I'm going to use my sentence classes and tree structure after all to implement the truth table. The reason being is that these classes are able to make the task of associating a literal with it's boolean value easy. This wasn't necessary for BC and FC but it is with with TT. I can do a postfix evaluator that just deals with the literals and operators as strings but each time I'll have to look up the string in a list and then cross-reference it to the value it's supposed to have. The Sentence Classes do this automatically. Also, I can use the postfix evaluation algorithm once to create the sentence tree structure once per program execution. If I don't do that, I have to run the postix evaluation on every row of the Truth Table, and every time I encounter a literal, I have to do a list lookup. I haven't started coding this yet but I've been doing a rough pseudo code:
@@ -41,12 +67,13 @@ Stack is a stack of sentences
 		FOR i = 0 to NumOfLiterals-1
 			Literal[i].Setvalue(LiteralVals[i])
 		// Evaluate each sentence in KB
-		FOR EACH SENTENCE IN KB.SENTENCES
-			IF !SENTENCE.EVAL
-				NumOfTrueWorlds-- // we found a false sentence in this row (world) so decrement the TrueWorlds counter
-				BREAK // stop checking the sentences on this row (world) of the TT, move on to the next row
-			ELSE
-				IF ASKED QUERY IS TRUE
+		IF ASKED QUERY IS TRUE
+			FOR EACH SENTENCE IN KB.SENTENCES
+				IF !SENTENCE.EVAL
+					NumOfTrueWorlds-- // we found a false sentence in this row (world) so decrement the TrueWorlds counter
+					BREAK // stop checking the sentences on this row (world) of the TT, move on to the next row
+		ELSE
+			NumOfTrueWorlds--
 	Return NumOfTrueWorlds
 		
 We can have a chat about this tomorrow and I'll code this up tomorrow night. Once it works with Horn Form sentences (where the only operators are "&" and "=>", it should be fairly simple to add all the other operator classes.
