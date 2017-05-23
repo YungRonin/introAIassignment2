@@ -7,6 +7,8 @@ public abstract class sentenceClass {
 	
 	// if a literalclass, just return the value
 	// if a sentence containing a conjunctive, return calculated value
-	public abstract boolean eval(); 
+	public abstract boolean eval();
+	
+	public abstract String debug(int level);
 }
 
