@@ -10,9 +10,16 @@ Stack is a stack of sentences
 	CREATE SENTENCE TREE USING POSTFIX EVALUATION ALGORITHM
 	Get symbol in sentence
 		if literal,
-			push to stack
-			put into KB list of literals if not already there
+			if literal already exists in literalList
+				get literal object from list and push to stack
+			else
+				create literal object from string
+				add new literal object to literalList
+				push new literal object to stack
+
+			
 		if 2-input operator,
+			create operator class from string
 			Pop 2 sentences,
 			create new sentence based on operator type,
 			push to stack

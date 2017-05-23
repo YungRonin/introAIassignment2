@@ -12,6 +12,7 @@ public abstract class truthMethod {
 			
 			this.code = code;
 			this.longName = longName;
+			kb = new knowledgeBase();			
 		}
 		
 		public abstract void init(String tell, String ask);
