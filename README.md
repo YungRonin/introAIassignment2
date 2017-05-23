@@ -36,7 +36,7 @@ Stack is a stack of sentences
 	FOR ROW = 0 to TTRows
 		// LiteralVals uses the "toBinaryString" method to create an array of strings that are either 0 or 1.
 		// I'll update my "setvalue" method in the literal class to accept "0" or "1" strings as well as boolean true or false
-		String[] LiteralVals = String.format("%"+bits+"s", Integer.toBinaryString(ROWS)).replace(' ', '0').split("");
+		String[] LiteralVals = String.format("%"+bits+"s", Integer.toBinaryString(ROW)).replace(' ', '0').split("");
 		// set all the boolean values of the literals in the KB
 		FOR i = 0 to NumOfLiterals-1
 			Literal[i].Setvalue(LiteralVals[i])
@@ -45,6 +45,8 @@ Stack is a stack of sentences
 			IF !SENTENCE.EVAL
 				NumOfTrueWorlds-- // we found a false sentence in this row (world) so decrement the TrueWorlds counter
 				BREAK // stop checking the sentences on this row (world) of the TT, move on to the next row
+			ELSE
+				IF ASKED QUERY IS TRUE
 	Return NumOfTrueWorlds
 		
 We can have a chat about this tomorrow and I'll code this up tomorrow night. Once it works with Horn Form sentences (where the only operators are "&" and "=>", it should be fairly simple to add all the other operator classes.

@@ -10,7 +10,7 @@ public class implication extends connectedSentence {
 	// material conditional AKA implication (A=>B) is equivalent to ((NOT A) OR B)
 	@Override
 	public boolean eval() {
-		return (!_sentenceA.eval() || _sentenceB.eval());
+		return ((!_sentenceA.eval()) || _sentenceB.eval());
 	}
 
 }

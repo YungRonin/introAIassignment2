@@ -3,47 +3,149 @@ package introAIassignment2;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Stack;
-import java.util.Set;
 
 
 public class truthTable extends truthMethod {
 	private List<sentenceClass> sentenceList; // contains sentences represented as sentenceClass object trees
 	private Map<String, literalClass> literalList; // uniquely identifies each literal represented in all sentences in the sentenceList
+	private sentenceClass askTree; // contains the ask query as a sentenceClass object tree
+	private String debugOut;
 
+	
 	public truthTable(String code, String longName) {
 		super(code, longName);
 		sentenceList = new LinkedList<sentenceClass>();
-		literalList = new HashMap<String, literalClass>();
+		literalList = new LinkedHashMap<String, literalClass>();
+		debugOut = "";
 	}
 
 	@Override
 	public void init(String tell, String ask) {
 		this.ask = ask;
 		this.tell = tell;
-		kb.addSentences(tell);
+		// kb.addSentences(tell); // this doesn't work for TruthTable - we want all facts and sentences in one list
+		this.addAllSentences(tell);
+		
 		// make a sentence object tree for each sentence string in the KB
 		// and add to the list of sentence tree objects
 		for (String sentence : kb.sentences()) {
 			// this also add all the literals to the literalList of literalClass objects
 			sentenceList.add(this.makeSentenceTree(sentence));
 		}
+		askTree = this.makeSentenceTree(ask);
 	}
 
+	// for Truth Tables, all facts and sentences are sentences
+	private void addAllSentences(String knowledge){
+		for (String sentence : knowledge.split(";")){
+			kb.addSentence(sentence);
+		}
+	}
+	
 	@Override
 	public String execute() {
+		DecimalFormat decimalFormat = new DecimalFormat("#");
 		String output = "";
-		output += kb.sentences().toString() + "\n";
-		output += literalList.keySet().toString() + "\n";
-		output += sentenceList.toString() + "\n";
-		// TODO Auto-generated method stub
+
+		double TTTrueModels = this.TruthTableTrueModels();
+		if (TTTrueModels > 0) {
+			// the method returned that there are true worlds for this KB
+			output += "ask = " + ask + "\n";
+			output += "YES: ";
+			output += decimalFormat.format(TTTrueModels);
+		}
+		else {
+			output += "NO";
+			output += "\n ask = " + ask;
+		}
+
+// debug output
+		debugOut += "\n";
+//		debugOut += "Tell: " + tell + "\n";
+		debugOut += "Sentences: " + kb.sentences().toString() + "\n";
+//		debugOut += "Facts: " + kb.facts().toString() + "\n";
+//		debugOut += "Literals: " + literalList.size() + "\n";
+//		debugOut += "Sentence Objects: "+ sentenceList.toString() + "\n";
+		debugOut += "Literals: " + literalList.size() + " Sentences: " + sentenceList.size() + "\n";
+		debugOut += "\n";
+		System.out.println(debugOut);
+		debugOut = "";
+// end debug **/		
+		
 		return output;
 	}
 	
+	// returns the number of models in which the KB sentences are true
+	private double TruthTableTrueModels() {
+		int NumOfLiterals = literalList.size();
+		double TTModels = Math.pow(2, NumOfLiterals);
+
+		double TTTrueModels = TTModels; // as false models are found, this is decremented
+		List<literalClass> literalArrayList = new ArrayList<literalClass>(literalList.values()); // need it in ArrayList format to iterate it
+		
+		// iterate through all possible models for this KB
+		for (int model = 0; model < TTModels; model++) {
+//debug			
+			debugOut += "Model: "+ String.format("%5s",model) +"  ";
+			
+			// LiteralVals uses the "toBinaryString" method to create an array of strings that are either 0 or 1.
+			// this is the binary bits that are set (1/true) or not set (0/false) according to this particular model
+			String[] LiteralVals = String.format(
+					"%"+NumOfLiterals+"s",
+					Integer.toBinaryString(model)
+					).replace(' ', '0').split("");
+			
+			// set each literal to TRUE (1) or FALSE (0);
+			for (int i = 0; i < NumOfLiterals; i++){
+				literalArrayList.get(i).setValue(LiteralVals[i]);
+//debug				
+				debugOut += literalArrayList.get(i).name()+":"+LiteralVals[i]+" "; 
+			}
+			
+			// evaluate each sentence in KB
+			// if a sentence is false, decrement the TTTrueModels counter and break out of the sentence evaluation loop
+		
+
+			for (sentenceClass sentence : sentenceList){
+				if (!sentence.eval()) {
+					debugOut += " Model is false\n";
+					TTTrueModels--; // sentence is false so decrement number of true models
+					break;	// we found a false sentence so stop evaluating sentences for this model - the model is false
+				}
+				if (sentenceList.indexOf(sentence) == sentenceList.size()-1 ){
+					debugOut += " Model is  true";
+					// when the model is true, test the asked query to see if it is also true
+					if (!askTree.eval()) {
+						TTTrueModels--; // query is false so decrement number of true models
+						debugOut += ", Query is false\n";
+					}
+					else {
+						debugOut += ", Query is  true\n";
+						System.out.print(debugOut);
+					}
+				}
+
+			}
+			debugOut = "";
+		}
+		return TTTrueModels;
+	}
+	
+//	private void debugModel(){
+////		String output = "";
+//		for (literalClass literal : literalList.values()) {
+//			System.out.print(literal.name()+":"+literal.eval()+", ");
+//		}
+//		System.out.println();
+//	}
+	
 	// returns a sentenceClass tree from the given sentence string
 	// adds all literals in the sentence the literalList if the literal name is not already present
-	public sentenceClass makeSentenceTree(String sentenceString){
+	private sentenceClass makeSentenceTree(String sentenceString){
 		Stack<sentenceClass> stack = new Stack<sentenceClass>();
 		List<String> postfixList = new LinkedList<String>();
 		sentenceClass symbol, sentenceA, sentenceB;
@@ -77,7 +179,7 @@ public class truthTable extends truthMethod {
             		stack.push(symbol);
         		}
         	} 
-    		// process operators
+    		// process the operators
         	// two-input operators pop two sentences from the stack
         	// and put them into a new sentence which contains
         	// sentence A and sentence B and a method to evaluate them
@@ -88,18 +190,18 @@ public class truthTable extends truthMethod {
         	else if (s.equals("=>")) { // implication (conditional)
         		sentenceA = stack.pop();
         		sentenceB = stack.pop();
-        		symbol = new implication(sentenceA, sentenceB);
+        		symbol = new implication(sentenceB, sentenceA);
         		stack.push(symbol);
         	}
         	else if (s.equals("&")) { // conjunction (AND)
-        		sentenceA = stack.pop();
         		sentenceB = stack.pop();
+        		sentenceA = stack.pop();
         		symbol = new conjunction(sentenceA, sentenceB);
         		stack.push(symbol);
         	}
 // NEW OPERATORS GO HERE
         	
-// example of NOT operator (a 1-input connective)
+// example of inversion (NOT) operator (a 1-input connective)
 
 //        	else if (s.equals("~")) { // inversion (NOT)
 //        		sentenceA = stack.pop();
