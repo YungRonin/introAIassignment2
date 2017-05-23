@@ -1,11 +1,11 @@
 package introAIassignment2;
 
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 import org.junit.*;
 
 import java.util.Arrays;
-import java.util.BitSet;
-import java.nio.ByteBuffer;
+//import java.util.BitSet;
+//import java.nio.ByteBuffer;
 
 public class ZZTest40Bitset {
 	

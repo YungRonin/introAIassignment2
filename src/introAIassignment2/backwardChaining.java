@@ -7,13 +7,13 @@ public class backwardChaining extends truthMethod{
 	
 	private static ArrayList<String> agenda;
 	private static ArrayList<String> resultProcess;
-	private static knowledgeBase kb;
+//	private static knowledgeBase kb;
 	 
 	public backwardChaining(String code, String longName){
 		super(code, longName);
 		agenda  = new ArrayList<String>();
 		resultProcess = new ArrayList<String>();
-		kb = new knowledgeBase();
+//		kb = new knowledgeBase();
 	}
 	 
 	@Override
