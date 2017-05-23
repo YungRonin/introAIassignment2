@@ -8,7 +8,9 @@ Adam, doing the generic TT evaluator is pretty straightforward from here.
 
 You need to make:
 disjunction extends connectedSentence
+
 biconditional extends connectedSentence
+
 inversion extends sentenceClass // this takes one sentence
 
 and in truthTable.java look for "// NEW OPERATORS GO HERE" for where to put the code to handle the new operators. Remembering that the inversion (NOT) only pops one symbol off the stack.
