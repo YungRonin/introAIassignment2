@@ -10,7 +10,7 @@ public class connectivesClass {
 			"<=>", // biconditional
 			"=>", // implication (conditional)
 			"|", // disjunction (OR)
-			"&", // conjunction (AND)
+			"&", // conjunction (AND)					
 			"~", // inversion (NOT)
 			")", // close parenthesis
 			"(" // open parenthesis
