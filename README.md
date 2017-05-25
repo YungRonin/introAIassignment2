@@ -1,5 +1,14 @@
 "# introAIassignment2" 
 
+2017-05-23 - Adam Richards
+
+Hi Dan, thanks for the info,
+
+I have added disjunction, biconditional and inversion classes to Adam's-branch-2 and added some code to truthtable.java
+Please let me know if I'm on the right track, or my lack of sleep is getting to me and I'm going completely wrong/missed something completely.
+I will have a look at it again tomorrow and do some testing, I will also start adding to the README.txt
+
+
 2017-05-23 - Dan Flett
 
 OK guys I think we have a working program. The original algorithm below in the README.md wasn't quite right. I had some issues because I was making the implication objects with the left and right the wrong way around and because I wasn't testing against the ASK query. I think it's all good now - test1.txt gives the output "YES: 3" which is what it's supposed to.
