@@ -159,15 +159,24 @@ public class truthTable extends truthMethod {
         		symbol = new conjunction(sentenceA, sentenceB);
         		stack.push(symbol);
         	}
-// NEW OPERATORS GO HERE
+        	else if (s.equals("~")) { // inversion (NOT)
+        		sentenceA = stack.pop();
+        		symbol = new inversion(sentenceA);
+        		stack.push(symbol);
+        	}
+        	else if (s.equals("<=>")) { // biconditional
+        		sentenceB = stack.pop();
+        		sentenceA = stack.pop();
+        		symbol = new biconditional(sentenceA, sentenceB);
+        		stack.push(symbol);
+        	}
+        	else if (s.equals("|")) { // disjuntion (or)
+        		sentenceB = stack.pop();
+        		sentenceA = stack.pop();
+        		symbol = new disjunction(sentenceA, sentenceB);
+        		stack.push(symbol);
+        	}
         	
-// example of inversion (NOT) operator (a 1-input connective)
-
-//        	else if (s.equals("~")) { // inversion (NOT)
-//        		sentenceA = stack.pop();
-//        		symbol = new inversion(sentenceA);
-//        		stack.push(symbol);
-//        	}
         	
 		} // end of sentence processing
 		
