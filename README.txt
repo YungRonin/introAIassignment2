@@ -1,7 +1,8 @@
 "# introAIassignment2" 
 
 Student Details: 
-Your full student names, ids, and your group number (as allocated by ESP).  COS30019_A02_T026 ++
+Your full student names, ids, and your group number (as allocated by ESP).
+COS30019_A02_T026 ++
 Adam Richards, 7634765
 Dylan Forster, 2058979
 Dan Flett, 100501422
@@ -76,7 +77,10 @@ Summary of the teamwork in this assignment. You need to clearly indicate who
 did what and how each team member gave feedback to other members. In this report, the overall
 percentage of contribution by each student to the project has to be clearly specified and summed to
 100%
-	The team members contributed to features as follows:
+
+
+The team members contributed to features as follows:
+Contribution%/Name
 35%		Dylan Forster
 			The Main method (including file parsing and output formatting) - iEngine.java, iEngine.bat
 			The Truth Method abstract class - truthMethod.java
@@ -103,6 +107,3 @@ percentage of contribution by each student to the project has to be clearly spec
 				- biconditional.java, disjunction.java, inversion.java
 			Modification of the "makeSentenceTree" method to accommodate the non-Horn-clause connectives for the research component - truthTable.java
 			Preparation of the README.txt file
-			
-			
-				
