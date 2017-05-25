@@ -1,6 +1,9 @@
 "# introAIassignment2" 
 
 2017-05-25 - Dan Flett
+Hey Adam I can't join that team - it says "Submitted" and there's no option to join the team. If you have submitted something, maybe remove it so Dylan and I can join. Otherwise, maybe see if we can form a new team so we can submit again. In any case, the work to be submitted that contains the research report is the file "COS30019_A02_T026.zip" which I've put on Github.
+
+2017-05-25 - Dan Flett
 I've finished the first and hopefully final draft of the research report. Please have a read of it to see if there's anything wrong with it and feel free to add to it.
 
 I'm going to submit the code, README.txt and the PDF of the research report now. But if you have anything to add, make your changes and resubmit it. Please remember to NOT submit this README.md file! :)
