@@ -105,6 +105,7 @@ public class truthTable extends truthMethod {
 	
 	// returns a sentenceClass tree from the given sentence string
 	// adds all literals in the sentence the literalList if the literal name is not already present
+	// based on: http://www.c4learn.com/data-structure/algorithm-evaluation-of-postfix-expression/
 	private sentenceClass makeSentenceTree(String sentenceString){
 		Stack<sentenceClass> stack = new Stack<sentenceClass>();
 		List<String> postfixList = new LinkedList<String>();
