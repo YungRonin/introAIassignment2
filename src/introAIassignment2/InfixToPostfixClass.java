@@ -18,11 +18,18 @@ public class InfixToPostfixClass {
     	String _sentence=sentence;
    	
 // debug print input    	
-//    	System.out.println(_sentence);
+    	System.out.println(_sentence);
 
+    	// temporarily replace "<=>" with "<->" to stop it being confused with "=>"
+    	_sentence = _sentence.replace("<=>", "<->");
+    	
     	for (String connective : connectivesClass.connectives){
     		_sentence = _sentence.replace(connective, " "+connective+" ");
     	}
+    	// restore "<->" to " <=> "
+    	_sentence = _sentence.replace("<->", " <=> ");
+
+    	
     	// trim multiple spaces to one, and trims leading and trailing whitespace
     	_sentence = _sentence.replaceAll(" +", " ").trim();
 

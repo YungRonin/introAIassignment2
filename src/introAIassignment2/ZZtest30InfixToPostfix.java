@@ -13,10 +13,10 @@ public class ZZtest30InfixToPostfix {
 		List<String> postfixList;
 		String output;
 
-		postfixList = InfixToPostfixClass.InfixToPostfix("p2=> p3");
+		postfixList = InfixToPostfixClass.InfixToPostfix("p2<=> p3");
 		output = "Output: " + String.join(" ",postfixList);
         System.out.println(output);
-        assertEquals("Output: p2 p3 =>", output);
+        assertEquals("Output: p2 p3 <=>", output);
 		
 		postfixList = InfixToPostfixClass.InfixToPostfix("p1&p3 => c");
 		output = "Output: " + String.join(" ",postfixList);

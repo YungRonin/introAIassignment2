@@ -6,20 +6,19 @@ sentenceClass _sentence;
 	
 	public inversion(sentenceClass sentence) {
 		super();
-		_sentence = sentence;
-		
+		_sentence = sentence;		
 	}
+	
 	//return the boolean result of not sentence
 	@Override
-	public boolean eval() {
-		
+	public boolean eval() {	
 		return (!_sentence.eval());
 	}
 
 	@Override
 	public String debug(int level) {
-		// TODO Auto-generated method stub
-		return null;
+		level++;
+		return "\\A"+level +":~"+_sentence.debug(level) + "\\"+this.eval();
 	}
 				
 }

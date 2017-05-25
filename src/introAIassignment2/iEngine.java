@@ -10,10 +10,11 @@ public class iEngine {
 	
 	public static void main(String[] args){
 		
-		tMethods = new truthMethod[3];
+		tMethods = new truthMethod[4];
 		tMethods[0] = new forwardChaining("fc", "Forward Chaining");
 		tMethods[1] = new backwardChaining("bc", "Backward Chaining");
 		tMethods[2] = new truthTable("tt", "Truth Table");
+		tMethods[3] = new truthTableDebug("ttd", "Truth Table Debug");
 		
 		if(args.length < 2){
 			System.out.println("Usage: iEngine <method> <filename> /n methods : fc, bc and tt");

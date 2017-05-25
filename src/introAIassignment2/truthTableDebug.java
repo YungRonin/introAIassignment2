@@ -13,14 +13,14 @@ public class truthTableDebug extends truthMethod {
 	private List<sentenceClass> sentenceList; // contains sentences represented as sentenceClass object trees
 	private Map<String, literalClass> literalList; // uniquely identifies each literal represented in all sentences in the sentenceList
 	private sentenceClass askTree; // contains the ask query as a sentenceClass object tree
-//	private String debugOut;
+	private String debugOut;
 
 	
 	public truthTableDebug(String code, String longName) {
 		super(code, longName);
 		sentenceList = new LinkedList<sentenceClass>();
 		literalList = new LinkedHashMap<String, literalClass>();
-//		debugOut = "";
+		debugOut = "";
 	}
 
 	@Override
@@ -63,13 +63,13 @@ public class truthTableDebug extends truthMethod {
 			output += "\n ask = " + ask;
 		}
 
-/** // debug output
+// // debug output
 		debugOut += "\n";
 //		debugOut += "Tell: " + tell + "\n";
 		debugOut += "Sentences: " + kb.sentences().toString() + "\n";
 //		debugOut += "Facts: " + kb.facts().toString() + "\n";
-//		debugOut += "Literals: " + literalList.size() + "\n";
-//		debugOut += "Sentence Objects: "+ sentenceList.toString() + "\n";
+		debugOut += "Literals: " + literalList.keySet().toString() + "\n";
+		debugOut += "Sentence Objects: "+ sentenceList.toString() + "\n";
 		debugOut += "Literals: " + literalList.size() + " Sentences: " + sentenceList.size() + "\n";
 		debugOut += "\n";
 		System.out.println(debugOut);
@@ -90,7 +90,7 @@ public class truthTableDebug extends truthMethod {
 		// iterate through all possible models for this KB
 		for (int model = 0; model < TTModels; model++) {
 //debug			
-//			debugOut += "Model: "+ String.format("%5s",model) +"  ";
+			debugOut += "Model: "+ String.format("%5s",model) +"  ";
 			
 			// LiteralVals uses the "toBinaryString" method to create an array of strings that are either 0 or 1.
 			// this is the binary bits that are set (1/true) or not set (0/false) according to this particular model
@@ -103,51 +103,42 @@ public class truthTableDebug extends truthMethod {
 			for (int i = 0; i < NumOfLiterals; i++){
 				literalArrayList.get(i).setValue(LiteralVals[i]);
 //debug				
-//				debugOut += literalArrayList.get(i).name()+":"+LiteralVals[i]+" "; 
+				debugOut += literalArrayList.get(i).name()+":"+LiteralVals[i]+" "; 
 			}
 			
 			// evaluate each sentence in KB
 			// if a sentence is false, decrement the TTTrueModels counter and break out of the sentence evaluation loop
 		
-//			debugOut += "\n";
-//			boolean debugFlag = true;
+			debugOut += "\n";
+			boolean debugFlag = true;
 
 			// check that the query is true for this model
 			if (!askTree.eval()) {
 				TTTrueModels--; // query is false so decrement number of true models
-//				debugOut += "Query is false\n";
+				debugOut += "Query is false\n";
 			}
 			else {
-//				debugOut += "Query is  true\n";
+				debugOut += "Query is  true\n";
 				for (sentenceClass sentence : sentenceList){
-//					debugOut += sentence.debug(0) +"\n";
-//					if (!sentence.eval() && debugFlag) {
+					debugOut += sentence.debug(0) +"\n";
 					if (!sentence.eval()) {
 						TTTrueModels--; // sentence is false so decrement number of true models
-						break;	// we found a false sentence so stop evaluating sentences for this model - the model is false
-//						debugFlag = false;
-//						debugOut +=" Model is false\n";
+//						break;	// we found a false sentence so stop evaluating sentences for this model - the model is false
+						debugFlag = false;
 					}
 				}
 			}
 
 
-//			if (!debugFlag) debugOut +=" Model is false\n";
-//			else debugOut +=" Model is  true\n"; 
-//			System.out.println(debugOut);
-//			
-//			debugOut = "";
+			if (!debugFlag) debugOut +=" Model is false\n";
+			else debugOut +=" Model is  true\n"; 
+			System.out.println(debugOut);
+			
+			debugOut = "";
 		}
 		return TTTrueModels;
 	}
 	
-//	private void debugModel(){
-////		String output = "";
-//		for (literalClass literal : literalList.values()) {
-//			System.out.print(literal.name()+":"+literal.eval()+", ");
-//		}
-//		System.out.println();
-//	}
 	
 	// returns a sentenceClass tree from the given sentence string
 	// adds all literals in the sentence the literalList if the literal name is not already present
@@ -205,15 +196,23 @@ public class truthTableDebug extends truthMethod {
         		symbol = new conjunction(sentenceA, sentenceB);
         		stack.push(symbol);
         	}
-// NEW OPERATORS GO HERE
-        	
-// example of inversion (NOT) operator (a 1-input connective)
-
-//        	else if (s.equals("~")) { // inversion (NOT)
-//        		sentenceA = stack.pop();
-//        		symbol = new inversion(sentenceA);
-//        		stack.push(symbol);
-//        	}
+        	else if (s.equals("~")) { // inversion (NOT)
+        		sentenceA = stack.pop();
+        		symbol = new inversion(sentenceA);
+        		stack.push(symbol);
+        	}
+        	else if (s.equals("<=>")) { // biconditional
+        		sentenceB = stack.pop();
+        		sentenceA = stack.pop();
+        		symbol = new biconditional(sentenceA, sentenceB);
+        		stack.push(symbol);
+        	}
+        	else if (s.equals("|")) { // disjuntion (or)
+        		sentenceB = stack.pop();
+        		sentenceA = stack.pop();
+        		symbol = new disjunction(sentenceA, sentenceB);
+        		stack.push(symbol);
+        	}
         	
 		} // end of sentence processing
 		

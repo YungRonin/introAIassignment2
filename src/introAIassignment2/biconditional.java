@@ -10,13 +10,16 @@ public class biconditional extends connectedSentence {
 	// biconditional (A<=>B) is equivalent to ((NOT A) OR B) AND ((NOT B) OR A)
 	@Override
 	public boolean eval() {
-		return (((!_sentenceA.eval()) || _sentenceB.eval()) && (!_sentenceB.eval()) || _sentenceA.eval());
+		boolean P = _sentenceA.eval();
+		boolean Q = _sentenceB.eval();
+		
+		return (( !P || Q ) && ( !Q || P ));
 	}
 	
 	@Override
 	public String debug(int level) {
 		level++;
-		return "[A"+level +":"+_sentenceA.debug(level) + " & B"+level+":"+ _sentenceB.debug(level) + "]"+this.eval();
+		return "[[A"+level +":"+_sentenceA.debug(level) + " <=> B"+level+":"+ _sentenceB.debug(level) + "]]"+this.eval();
 	}
 }
 
