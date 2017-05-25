@@ -28,7 +28,6 @@ public class InfixToPostfixClass {
     	}
     	// restore "<->" to " <=> "
     	_sentence = _sentence.replace("<->", " <=> ");
-
     	
     	// trim multiple spaces to one, and trims leading and trailing whitespace
     	_sentence = _sentence.replaceAll(" +", " ").trim();

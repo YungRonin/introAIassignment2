@@ -1,6 +1,10 @@
 "# introAIassignment2" 
 
-2017-05-25 - Dan Flett
+2017-05-25b - Dan Flett
+
+I've updated as much as I can the README.txt file and given attribution for our contributions. Please edit this to suit yourselves. Dylan, can you add some notes about the your influences and inspiration for the FC and BC methods please?
+
+2017-05-25a - Dan Flett
 
 I've just made some minor tweaks to the main code and have added some clearer debug messages to the output of the TruthTableDebug method. You can all this method with "ttd" at the command-line and it prints out all the info you could possibly need to understand what's going on with the Truth Table. :) I'll use this in the report.
 
@@ -9,6 +13,7 @@ I'll be finished the report tonight. I'm working all day tomorrow (Friday) so I 
 Can we compile the iengine application as a static .exe file? It would be good to have a working exe file in the root directory of zip.
 
 Also, we need to remember to remove this README.md from the zip before we submit it! :) We should remove the test .txt files too.
+
 
 2017-05-23 - Adam Richards
 
