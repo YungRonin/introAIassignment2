@@ -1,9 +1,9 @@
 "# introAIassignment2" 
 
 Student Details: 
-Your full student names, ids, and your group number (as allocated by ESP).
+Your full student names, ids, and your group number (as allocated by ESP).  COS30019_A02_T026 ++
 Adam Richards, 7634765
-Dylan Forster, ID
+Dylan Forster, 2058979
 Dan Flett, 100501422
 
 
@@ -12,9 +12,45 @@ Include a list of the features you have implemented. Clearly state if a
 required feature has not been implemented. Failure to do this will result in penalties. Include a list of
 any known bugs.
 
+File Reader
+Truth Table - with generic logic statement evaluation and debug
+Forward Chaining
+Backward Chaining
 
-Test cases: The test cases you have developed ton test your program. What bugs have you found?
 
+
+Test cases: The test cases you have developed to test your program. What bugs have you found?
+Some of our test cases:
+
+	TELL
+	p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p1=>d; p1&p3 => c;
+	ASK
+	d
+
+	TELL
+	p2=> p3; p3 => p1; p1=>d; a; b; p2;
+	ASK
+	d
+
+	TELL
+	s; t;
+	ASK
+	s|~s
+
+	TELL
+	p2=> p3; p3 => p1; c => e; b&e => f; f&g => h; p1=>d; p1&p3 => c; a; b; p2;
+	ASK
+	d
+
+	TELL
+	(a<=>b); b=>c; a&b|c=>d; a&~(b|c)<=>e; ~f; ~a|(c=>f&g|h)<=>v|r|c; g<=>~i; a<=>~j|(k|l); m&n=>a; a|o; d&p; c=>q; d<=>r; ~s; t; m=>a=>u; ~a<=>(s|t)=>v; g|w;
+	ASK
+	d&w
+
+	TELL
+	p2=> p3; h&d&e=>zed; p3 => p1; c => e; b&e => f; f&g => h; p1=>d; p1&p3 => c; a; b; p2; g;
+	ASK
+	zed
 
 Acknowledgements/Resources: 
 Include in your readme.txt file a list of the resources you have

@@ -1,5 +1,12 @@
 "# introAIassignment2" 
 
+2017-05-25 - Adam Richards
+
+Hey guys I think we need to join a team in the submission portal: https://esp.ict.swin.edu.au/
+I created one, please join: COS30019_A02_T026
+
+Do we have anything else to expand upon for the features/bug/missing point?
+
 2017-05-25b - Dan Flett
 
 I've updated as much as I can the README.txt file and given attribution for our contributions. Please edit this to suit yourselves. Dylan, can you add some notes about the your influences and inspiration for the FC and BC methods please?
