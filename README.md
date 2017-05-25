@@ -1,5 +1,10 @@
 "# introAIassignment2" 
 
+2017-05-25 - Dan Flett
+I've finished the first and hopefully final draft of the research report. Please have a read of it to see if there's anything wrong with it and feel free to add to it.
+
+I'm going to submit the code, README.txt and the PDF of the research report now. But if you have anything to add, make your changes and resubmit it. Please remember to NOT submit this README.md file! :)
+
 2017-05-25 - Adam Richards
 
 Hey guys I think we need to join a team in the submission portal: https://esp.ict.swin.edu.au/
