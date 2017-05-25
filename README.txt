@@ -1,9 +1,9 @@
 "# introAIassignment2" 
 
 Student Details: 
-Your full student names, ids, and your group number (as allocated by ESP).
+Your full student names, ids, and your group number (as allocated by ESP).  COS30019_A02_T026 ++
 Adam Richards, 7634765
-Dylan Forster, ID
+Dylan Forster, 2058979
 Dan Flett, 100501422
 
 
