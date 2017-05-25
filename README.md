@@ -1,5 +1,15 @@
 "# introAIassignment2" 
 
+2017-05-25 - Dan Flett
+
+I've just made some minor tweaks to the main code and have added some clearer debug messages to the output of the TruthTableDebug method. You can all this method with "ttd" at the command-line and it prints out all the info you could possibly need to understand what's going on with the Truth Table. :) I'll use this in the report.
+
+I'll be finished the report tonight. I'm working all day tomorrow (Friday) so I won't be able to do much more then. I should be able to get a moment to submit my work though. I guess once the research report and the README.txt file is done we zip up this repository and each submit it? If the README.txt is finished tonight, we're ready to submit the whole thing.
+
+Can we compile the iengine application as a static .exe file? It would be good to have a working exe file in the root directory of zip.
+
+Also, we need to remember to remove this README.md from the zip before we submit it! :) We should remove the test .txt files too.
+
 2017-05-23 - Adam Richards
 
 Hi Dan, thanks for the info,
