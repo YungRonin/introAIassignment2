@@ -1,0 +1,4 @@
+TELL
+(a<=>b); b=>c; a&b|c=>d; a&~(b|c)<=>e; ~f; ~a|(c=>f&g|h)<=>v|r|c; g<=>~i; a<=>~j|(k|l); m&n=>a; a|o; d&p; c=>q; d<=>r; ~s; t; m=>a=>u; ~a<=>(s|t)=>v; g|w;
+ASK
+d&w

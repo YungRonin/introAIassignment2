@@ -9,6 +9,8 @@ public abstract class sentenceClass {
 	// if a sentence containing a conjunctive, return calculated value
 	public abstract boolean eval();
 	
-	public abstract String debug(int level);
+	public abstract String debug();
+
+	public abstract String debugEval(int level);
 }
 

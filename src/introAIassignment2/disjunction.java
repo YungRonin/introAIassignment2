@@ -13,8 +13,13 @@ public class disjunction extends connectedSentence {
 	}
 	
 	@Override
-	public String debug(int level) {
+	public String debug() {
+		return "( " + _sentenceA.debug() + " | " + _sentenceB.debug() + " )";
+	}
+	
+	@Override
+	public String debugEval(int level) {
 		level++;
-		return "<A"+	level +":"+_sentenceA.debug(level) + " | B"+level+":"+ _sentenceB.debug(level) + ">"+this.eval();
+		return " <A"+ level +": "+_sentenceA.debugEval(level) + " | B"+level+": "+ _sentenceB.debugEval(level) + " >:"+this.eval();
 	}
 }

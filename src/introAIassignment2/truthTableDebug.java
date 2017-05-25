@@ -63,14 +63,16 @@ public class truthTableDebug extends truthMethod {
 			output += "\n ask = " + ask;
 		}
 
-// // debug output
+//** debug output
 		debugOut += "\n";
-//		debugOut += "Tell: " + tell + "\n";
-		debugOut += "Sentences: " + kb.sentences().toString() + "\n";
-//		debugOut += "Facts: " + kb.facts().toString() + "\n";
-		debugOut += "Literals: " + literalList.keySet().toString() + "\n";
-		debugOut += "Sentence Objects: "+ sentenceList.toString() + "\n";
-		debugOut += "Literals: " + literalList.size() + " Sentences: " + sentenceList.size() + "\n";
+//		debugOut += "Tell: " + tell + "\n\n";
+		debugOut += "Sentence Strings: " + kb.sentences().toString() + "\n\n";
+//		debugOut += "Facts: " + kb.facts().toString() + "\n\n";
+		debugOut += "Literals: " + literalList.keySet().toString() + "\n\n";
+		debugOut += "Sentence Objects: \n\t"+ sentenceList.toString().replace(" ","\n\t").replaceAll("\\[|\\]|,", "") + "\n\n";
+		debugOut += "Sentence Trees:\n";
+		for (sentenceClass sentence : sentenceList) debugOut += "\t"+ sentence.debug() + "\n";
+		debugOut += "\nLiterals: " + literalList.size() + " Sentences: " + sentenceList.size() + "\n\n";
 		debugOut += "\n";
 		System.out.println(debugOut);
 		debugOut = "";
@@ -89,8 +91,9 @@ public class truthTableDebug extends truthMethod {
 		
 		// iterate through all possible models for this KB
 		for (int model = 0; model < TTModels; model++) {
-//debug			
-			debugOut += "Model: "+ String.format("%5s",model) +"  ";
+//debug
+			int places = Integer.valueOf((int)TTModels).toString().length(); // get number of digits of largest model number // debug
+			debugOut += "Model: "+ String.format("%"+places+"s",model) +"  "; // debug
 			
 			// LiteralVals uses the "toBinaryString" method to create an array of strings that are either 0 or 1.
 			// this is the binary bits that are set (1/true) or not set (0/false) according to this particular model
@@ -103,38 +106,47 @@ public class truthTableDebug extends truthMethod {
 			for (int i = 0; i < NumOfLiterals; i++){
 				literalArrayList.get(i).setValue(LiteralVals[i]);
 //debug				
-				debugOut += literalArrayList.get(i).name()+":"+LiteralVals[i]+" "; 
+				debugOut += literalArrayList.get(i).name()+":"+LiteralVals[i]+" "; // debug 
 			}
 			
 			// evaluate each sentence in KB
 			// if a sentence is false, decrement the TTTrueModels counter and break out of the sentence evaluation loop
 		
-			debugOut += "\n";
-			boolean debugFlag = true;
+// debug
+			debugOut += "\n"; // debug
+			Boolean modelTrue = true; // debug
 
 			// check that the query is true for this model
 			if (!askTree.eval()) {
 				TTTrueModels--; // query is false so decrement number of true models
-				debugOut += "Query is false\n";
+// debug
+				debugOut += "Query is false\n"; // debug
+				modelTrue = null; // don't check the model
 			}
 			else {
-				debugOut += "Query is  true\n";
-				for (sentenceClass sentence : sentenceList){
-					debugOut += sentence.debug(0) +"\n";
+// debug				
+				debugOut += "Query is  true\n"; // debug
+				for (sentenceClass sentence : sentenceList){		
+// debug					
+					debugOut += sentence.debugEval(0) +"\n"; // debug
 					if (!sentence.eval()) {
-						TTTrueModels--; // sentence is false so decrement number of true models
-//						break;	// we found a false sentence so stop evaluating sentences for this model - the model is false
-						debugFlag = false;
+// debug						
+						if (modelTrue) TTTrueModels--; // sentence is false so decrement number of true models // debug
+// debug						TTTrueModels--;
+// debug						break;	// we found a false sentence so stop evaluating sentences for this model - the model is false
+						modelTrue = false; //debug
 					}
 				}
 			}
 
-
-			if (!debugFlag) debugOut +=" Model is false\n";
+//** debug			
+			if (modelTrue == null) debugOut += " Model not checked\n";
+			else if (!modelTrue) debugOut +=" Model is false\n";
 			else debugOut +=" Model is  true\n"; 
 			System.out.println(debugOut);
 			
 			debugOut = "";
+// end debug **// 			
 		}
 		return TTTrueModels;
 	}

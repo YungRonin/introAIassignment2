@@ -16,9 +16,13 @@ sentenceClass _sentence;
 	}
 
 	@Override
-	public String debug(int level) {
-		level++;
-		return "\\A"+level +":~"+_sentence.debug(level) + "\\"+this.eval();
+	public String debug() {
+		return "~" + _sentence.debug();
 	}
-				
+
+	@Override
+	public String debugEval(int level) {
+		level++;
+		return " (A"+level +": ~"+_sentence.debugEval(level) + " ):"+this.eval();
+	}
 }

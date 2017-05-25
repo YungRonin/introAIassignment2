@@ -18,7 +18,7 @@ public class InfixToPostfixClass {
     	String _sentence=sentence;
    	
 // debug print input    	
-    	System.out.println(_sentence);
+//    	System.out.println(_sentence);
 
     	// temporarily replace "<=>" with "<->" to stop it being confused with "=>"
     	_sentence = _sentence.replace("<=>", "<->");
