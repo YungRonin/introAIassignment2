@@ -4,6 +4,8 @@
 
 Hey guys I havent submitted anything, somebody else must have joined my team and submitted something, I can't find a way to leave the team either
 
+*update* I have just emailed Bao and will see what he says, I attached the zip just in case
+
 2017-05-25 - Dylan Forster
 
 Hi Dan, if Adam doesnt respond maybe we should create a second group just to be sure we've submitted...
