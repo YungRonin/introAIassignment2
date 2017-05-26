@@ -58,6 +58,11 @@ Include in your readme.txt file a list of the resources you have
 used to create your work. A simple list of URL's is not enough. Include with each entry a basic
 description of how the person or website assisted you in your work.
 
+The forwad and backward chaining algorythms where created using sample code form the following two links;
+//http://snipplr.com/view/56297/ai-backward-chaining-implementation-for-propositional-logic-horn-form-knowledge-bases/
+//http://snipplr.com/view/56296/ai-forward-chaining-implementation-for-propositional-logic-horn-form-knowledge-bases/
+While the sample code does not directly apply to our solution the methodology and logic is sound and does not require extensive refactoring to apply to our solution, one of the key differences in our implmentation is the use of our KB class.
+
 	The Infix To Posfix converter was initially inspired by this code: http://introcs.cs.princeton.edu/java/43stack/InfixToPostfix.java.html
 	This is a very simple implementation in java that clearly shows the algorithm. However, it expects that every infix expression be in parenthesis, whereas we need it to evaluate expressions where parentheses are optional. This site http://csis.pace.edu/~wolf/CS122/infix-postfix.htm provided more insight into a general, parenthesis-optional algorithm. Of course, the symbols had to be adapted to the logic symbols, but the principle is largely the same.
 	
