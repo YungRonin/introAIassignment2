@@ -1,5 +1,11 @@
 "# introAIassignment2" 
 
+2017-05-26 - Dan Flett
+
+I just submitted it and have uploaded the receipt. Your names are both in team COS30019_A02_T041. Check the receipt.pdf just to be sure.
+
+Thanks guys, it was a pleasure working with you.
+
 2017-05-26 - Adam Richards
 *update* Bao just emailed back saying I'm in the new team, I will submit it now if nobody has already?
 
