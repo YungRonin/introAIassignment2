@@ -1,6 +1,7 @@
 "# introAIassignment2" 
 
 2017-05-26 - Adam Richards
+*update* Bao just emailed back saying I'm in the new team, I will submit it now if nobody has already?
 
 Hey guys I havent submitted anything, somebody else must have joined my team and submitted something, I can't find a way to leave the team either
 
