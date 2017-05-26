@@ -1,5 +1,9 @@
 "# introAIassignment2" 
 
+2017-05-26 - Dylan Forster
+
+Sweet!
+
 2017-05-26 - Dan Flett
 
 I just submitted it and have uploaded the receipt. Your names are both in team COS30019_A02_T041. Check the receipt.pdf just to be sure.
