@@ -3,7 +3,7 @@
 2017-05-25 - Dylan Forster
 
 Hi Dan, if Adam doesnt respond maybe we should create a second group just to be sure we've submitted...
-I'm updating the readme at the moment to include the links for the code examples i used.
+I'm updating the readme at the moment to include the links for the code examples i used. ***update I've created the group COS30019_A02_T041 feel free to join and submit when you're ready***
 
 2017-05-25 - Dan Flett
 Hey Adam I can't join that team - it says "Submitted" and there's no option to join the team. If you have submitted something, maybe remove it so Dylan and I can join. Otherwise, maybe see if we can form a new team so we can submit again. In any case, the work to be submitted that contains the research report is the file "COS30019_A02_T026.zip" which I've put on Github.
